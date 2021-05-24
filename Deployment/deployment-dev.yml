@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-deployment-dev-VERSION
+  namespace: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: helloworld
+      env: dev
+      ver: "VERSION"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: helloworld
+        env: dev
+        ver: "VERSION"
+    spec:
+      containers:
+      - name: myapp
+        image: IMAGENAME
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8085
+        livenessProbe:
+          exec:
+            command:
+            # - ls
+            - cat
+            - /tmp/test1.txt 
+          initialDelaySeconds: 2
+          periodSeconds: 5
+        readinessProbe:
+          # httpGet:
+          #   path: /rest/docker/hello
+          #   port: 8085
+          # initialDelaySeconds: 5
+          # periodSeconds: 15
+          # timeoutSeconds: 30
+          exec:
+            command:
+            - cat
+            - /tmp/test2.txt
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 30 
+        startupProbe:
+          httpGet:
+            path: /rest/docker/hello
+            port: 8085
+          initialDelaySeconds: 5
+          periodSeconds: 15
+          timeoutSeconds: 300
