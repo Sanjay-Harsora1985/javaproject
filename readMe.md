@@ -1,3 +1,3 @@
 How to access application
 
-http://km:30086/rest/docker/hello
+http://km:30086/rest/docker/hello-world
