@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.personal.ayanendu</groupId>
-	<artifactId>App1-spring-boot</artifactId>
+	<artifactId>my-spring-boot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>App1-spring-boot</name>
+	<name>my-spring-boot</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -38,7 +38,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>App1-spring-boot</finalName>
+		<finalName>my-spring-boot</finalName>
 	</build>
 
 </project>
